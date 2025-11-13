@@ -1,55 +1,462 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Gung Gus & Sonia</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- GSAP CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
-    <link rel="stylesheet" href="assets/css/landing.css">
-</head>
-<body>
+    <meta property="og:title" content="The Wedding Of : Utsman & Yani" />
+    <meta property="og:description" content="Minggu, 30 Juli 2023" />
+    <meta property="og:image" content="https://i.ibb.co/p2xrqXN/Utsman.png" />
+    <meta
+      property="og:url"
+      content="https://masreyxlvi.github.io/Utsman-Yani/"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      name="description"
+      content="Undangan pernikahan Utsman & Yani Mulyani. Minggu, 30 Juli 2023"
+    />
 
-    <div class="hero-section">
-        <!-- Efek partikel -->
-        <div class="particles" id="particles"></div>
-        
-        <!-- Overlay bunga -->
-        <div class="flower-overlay"></div>
-        
-        <!-- Konten undangan -->
-        <div class="invitation-content">
-            <h1 class="fade-in-text">The Wedding of</h1>
-            <h2 class="couple-name">Gung Gus & Sonia</h2>
-            <p class="date-text">15 • 06 • 2024</p>
-            
-            <div class="guest-info">
-                <p class="guest-text">Kepada Bapak/Ibu/Saudara/i</p>
-                <p class="guest-name">Tamu Undangan</p>
-            </div>
+    <link rel="preload" href="assets/css/style.css" as="style" />
 
-            <a href="home.html" class="cta-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M48 64C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM0 112C0 99.1 7.2 87.7 18.1 82.2L244.5 220.6c11.3 6.4 25.6 6.4 37 0L501.9 82.2C494.8 87.7 512 99.1 512 112v23.2L327.9 259.3c-17.7 10-39.2 10-56.9 0L0 135.2V112zM48 448V214.3l168.1 95.6c21.8 12.4 48.7 12.4 70.5 0L464 214.3V448H48z"/>
-                </svg>
-                Buka Undangan
-            </a>
-        </div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,600;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Explora&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <title>The Wedding Of : Utsman & Yani Mulyani</title>
+    <link rel="shortcut icon" href="assets/images/logo.png" />
+  </head>
+  <body>
+    <div id="logo">
+      <img src="assets/images/logo.png" alt="Logo" />
     </div>
 
-    <button class="music-control" id="musicToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-    </button>
+    <!-- Hero Section tanpa Parallax -->
+    <section class="hero" id="home">
+      <div class="slider">
+        <img src="assets/images/hero/hero1.JPG" alt="" class="slide" />
+        <img src="assets/images/hero/hero2.JPG" alt="" class="slide" />
+        <img src="assets/images/hero/hero3.JPG" alt="" class="slide" />
+      </div>
 
-    <script src="assets/js/landing.js" defer></script>
+      <div class="content">
+        <div class="hero-text">
+          <h4>The <span> Wedding Of</span></h4>
+          <h1>Utsman <span> &</span> Yani</h1>
+          <a href="">Save The Date | <span>30 . 07 . 2023</span></a>
+        </div>
 
-</body>
+        <div class="countdown" id="countdown">
+          <div class="waktu">
+            <h5 id="days">00</h5>
+            <p>Days</p>
+          </div>
+          <div class="waktu">
+            <h5 id="hours">00</h5>
+            <p>Hours</p>
+          </div>
+          <div class="waktu">
+            <h5 id="minutes">00</h5>
+            <p>Minutes</p>
+          </div>
+          <div class="waktu">
+            <h5 id="seconds">00</h5>
+            <p>Seconds</p>
+          </div>
+        </div>
+
+        <div class="slider-progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quran-split" id="quran">
+      <div class="initial-text-cover" id="initialText">
+        <h1 class="bismillah-text">BISMILLAH</h1>
+        <p class="ayatsuci-text">AYAT SUCI</p>
+        <p class="ikrar-abadi-text">IKRAR ABADI</p>
+      </div>
+
+      <div class="split-container" id="splitContainer">
+        <div class="split-left" id="splitLeft"></div>
+
+        <div class="split-right" id="splitRight"></div>
+      </div>
+
+      <div class="glass-card" id="glassCard">
+        <h3 class="card-title">Surah Ar-Rum (30:21)</h3>
+        <p class="arabic-text">
+          <!-- وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+          لِتَسْكُنُوا إِلَيْهَا -->
+        </p>
+        <hr class="gold-divider" />
+        <p class="translation-text">
+          Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+          pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+          dan merasa tenteram kepadanya.
+        </p>
+      </div>
+    </section>
+
+    <!-- Profil Mempelai Pria -->
+    <section class="about" id="about">
+      <div class="row">
+        <div class="about-img" data-aos="zoom-in-up">
+          <!-- <img src="assets/images/utsman.jpg" alt="about" /> -->
+        </div>
+        <div class="content">
+          <h3 data-aos="fade-up">Utsman</h3>
+          <p data-aos="fade-up" data-aos-delay="300">Putra Pertama Dari :</p>
+          <span data-aos="fade-up" data-aos-delay="300"
+            >Bapak Didin dan Ibu Papat.</span
+          >
+          <a
+            href="https://instagram.com/utsman520?igshid=MzNlNGNkZWQ4Mg=="
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            target="_blank"
+            class="cba"
+            ><i data-feather="instagram" style="vertical-align: middle"></i>
+            INSTAGRAM</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Profil Mempelai Wanita -->
+    <section class="about2" id="about2">
+      <div class="row">
+        <div class="about2-img" data-aos="zoom-in-up">
+          <!-- <img src="assets/images/yani.jpg" alt="about2" /> -->
+        </div>
+        <div class="content">
+          <h3 data-aos="fade-up">Yani Mulyani</h3>
+          <p data-aos="fade-up" data-aos-delay="300">Putri Kedua Dari :</p>
+          <span data-aos="fade-up" data-aos-delay="300"
+            >Bapak Umar (Alm) dan Ibu Mastoah</span
+          >
+          <a
+            href="https://instagram.com/_yniivzyus?igshid=OGQ5ZDc2ODk2ZA=="
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            target="_blank"
+            class="cba"
+            ><i data-feather="instagram" style="vertical-align: middle"></i>
+            INSTAGRAM</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Love Story -->
+    <section class="story" id="story">
+      <h2 data-aos="zoom-in">Our Love Story</h2>
+      <div class="part">
+        <h3 data-aos="fade-up">14 Agustus 2014</h3>
+        <p>
+          Tahun 2014, dimana tahun kita menjalani hubungan tepatnya di tanggal
+          14 Agustus 2014 Utsman mengungkapkan perasannya secara langsung kepada
+          Yani.
+        </p>
+      </div>
+      <div class="part">
+        <h3 data-aos="fade-up">27 Feburari 2021</h3>
+        <p>
+          Kita memutuskan untuk benar-benar serius untuk ke jenjang selanjutnya.
+          Dan akhirnya, pada tanggal 27 Feburari tahun 2021 kita melangsungkan
+          pertunangan.
+        </p>
+      </div>
+      <div class="part">
+        <h3 data-aos="fade-up">26 Juli 2023</h3>
+        <p>
+          Tahun ini, kita akan melangsungkan pernikahan tepatnya 26 Juli 2023,
+          kita akan melaksanakan Akad Nikah dan di tanggal 30 Juli 2023 kita
+          juga melangsungkan acara Resepsi. Kami mengubah status hingga menjadi
+          pasangan suami istri. Semoga allah swt. Memberikan keberkahan
+          pernikahan ini. "AMIN".
+        </p>
+      </div>
+    </section>
+
+    <!-- Acara Pernikahan -->
+    <section class="bg-event">
+      <main class="event" id="date">
+        <h2 data-aos="fade-right">Wedding <span>Event</span></h2>
+        <div
+          class="card"
+          data-aos="fade-up-right"
+          data-aos-delay="1000"
+          data-aos-duration="1000"
+        >
+          <div class="box-img">
+            <div class="slider-img">
+              <!-- <img src="assets/images/event/event.JPG" alt="" class="event-img" />
+                        <img src="assets/images/event/event1.JPG" alt="" class="event-img" />
+                        <img src="assets/images/event/event2.JPG" alt="" class="event-img" /> -->
+            </div>
+          </div>
+          <div class="box-date">
+            <div class="title-event">
+              <h3>Akad Nikah</h3>
+            </div>
+            <div class="date-event">
+              <div class="tgl">
+                <h4>26</h4>
+              </div>
+              <div class="detail">
+                <h5>Rabu</h5>
+                <h5>Juli</h5>
+                <h5>2023</h5>
+              </div>
+              <div class="jam">
+                <p>
+                  <i data-feather="clock" style="color: #000"></i> 09.00 WIB
+                </p>
+                <div class="lokasi">
+                  <h5>Lokasi Acara</h5>
+                  <p>
+                    Kp. Cisaru Kulon, RT/RW 002/008, Kelurahan Rancagoong, Kec
+                    Cilaku
+                  </p>
+                  <a
+                    href="https://goo.gl/maps/L2jcuRbeP6z76h6m7"
+                    target="_blank"
+                    class="cbt"
+                    >Google Maps</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <main class="event-2" id="date">
+        <div
+          class="card"
+          data-aos="fade-up-left"
+          data-aos-duration="1000"
+          data-aos-delay="1000"
+        >
+          <div class="box-img">
+            <div class="slider-img">
+              <!-- <img src="assets/images/event/event4.JPG" alt="" class="event-2-img" />
+                        <img src="assets/images/event/event5.JPG" alt="" class="event-2-img" />
+                        <img src="assets/images/event/event6.JPG" alt="" class="event-2-img" />  -->
+            </div>
+          </div>
+          <div class="box-date">
+            <div class="title-event-2">
+              <h3>Resepsi</h3>
+            </div>
+            <div class="date-event-2">
+              <div class="tgl">
+                <h4>30</h4>
+              </div>
+              <div class="detail">
+                <h5>Minggu</h5>
+                <h5>Juli</h5>
+                <h5>2023</h5>
+              </div>
+              <div class="jam">
+                <p>
+                  <i data-feather="clock" style="color: #000"></i> 10.00 WIB
+                </p>
+                <div class="lokasi">
+                  <h5>Lokasi Acara</h5>
+                  <p>
+                    Kp. Cisaru Kulon, RT/RW 002/008, Kelurahan Rancagoong, Kec
+                    Cilaku
+                  </p>
+                  <a href="https://goo.gl/maps/L2jcuRbeP6z76h6m7" class="cbt"
+                    >Google Maps</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- Galeri -->
+    <div class="bg-gallery">
+      <section class="gallery" id="gallery">
+        <h2 data-aos="fade-right">Gallery Our Moment</h2>
+        <div class="container">
+          <div class="img-gallery">
+            <!-- Gallery images -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Wedding Gift -->
+    <section class="gift" id="gift">
+      <h2 data-aos="fade-down">Wedding Gift</h2>
+      <p data-aos="fade-up" data-aos-delay="0">
+        Bagi bapak/ibu/saudara/i yang ingin mengirimkan hadiah pernikahan dapat
+        melalui virtual account atau e-wallet di bawah ini:
+      </p>
+      <div class="buttom" data-aos="fade-up">
+        <a class="rekening" id="show-cards">
+          Kilk Disini
+          <i data-feather="arrow-right" style="vertical-align: middle"></i
+        ></a>
+      </div>
+      <div class="card-container" id="card-container">
+        <div class="card">
+          <h3>DANA</h3>
+          <h5 id="textSalin">0821-2087-7636</h5>
+          <p id="yani">Utsman</p>
+          <button class="salin" id="show-cards" onclick="noUtsman()">
+            <i data-feather="copy" style="vertical-align: middle"></i> Salin
+            No.Dana
+          </button>
+        </div>
+        <div class="card">
+          <h3>DANA</h3>
+          <h5 id="textSalin2">0813-1981-7474</h5>
+          <p id="yani">Yani Mulyani</p>
+          <button class="salin" onclick="noYani()" id="show-cards">
+            <i data-feather="copy" style="vertical-align: middle"></i> Salin
+            No.Dana
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp">
+      <div class="row">
+        <!-- <img src="assets/images/rsvp.jpg" alt="" class="rsvp-img"> -->
+        <div class="message" data-aos="fade-down">
+          <form id="formMessage">
+            <div class="input-group">
+              <input type="text" name="nama" placeholder="Nama" />
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                name="hubungan"
+                placeholder="Hubungan (Saudara, Teman Kerja, Teman Sekolah)"
+              />
+            </div>
+            <div class="input-group">
+              <textarea
+                cols="30"
+                rows="10"
+                name="pesan"
+                placeholder="Berikan Ucapan & Doa Terbaik Untuk kedua Mempelai"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">
+              Send
+              <i
+                data-feather="arrow-right"
+                data-aos="fade-up"
+                style="vertical-align: middle"
+              ></i>
+            </button>
+          </form>
+          <div class="container-card" data-aos="fade-up">
+            <div class="card-message"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Penutup -->
+    <section class="doa" id="home">
+      <div class="content">
+        <h1>TerimaKasih</h1>
+        <h4>
+          Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila
+          Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada
+          kami.
+        </h4>
+        <h4 style="margin-top: 8rem">KAMI YANG BERBAHAGIA</h4>
+        <h3>Utsman <span>&</span> Yani</h3>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="logo">
+        <!-- <img src="assets/images/logo.png" alt="logo"> -->
+        <a href="#" style="vertical-align: middle">Masreyxlvi.com</a>
+      </div>
+      <div class="socials">
+        <a href="" class="wa">WA : 0813 1336 2467</a>
+        <a href="" class="ig">| IG : @masreyxlvi</a>
+      </div>
+      <div class="credit">
+        <p>Copyright &copy; 2022 - 2023</p>
+        <h5>HUBUNGI KAMI</h5>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <!-- Tambahkan sebelum script.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom JavaScript Files -->
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/gallery.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/lightbox-plus-jquery.js"></script>
+
+    <!-- AOS Initialization -->
+    <script>
+      AOS.init({
+        duration: 1500,
+        once: true,
+      });
+    </script>
+  </body>
 </html>
