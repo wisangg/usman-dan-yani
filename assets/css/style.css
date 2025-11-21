@@ -331,163 +331,465 @@ body {
   width: 100%;
 }
 
-/* ===== QURAN SECTION - FIXED ===== */
-.quran-split {
+:root {
+  /* Warna Dasar */
+  --gold: #c9a96e;
+  --dark-bg: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --font-arabic: "Traditional Arabic", "Scheherazade New", "Amiri", serif;
+  --font-latin: "Cormorant Garamond", serif;
+}
+
+/* ================================================= */
+/* ===== QURAN SECTION - KONTEN INDUK (VIEWPORT) ===== */
+/* ================================================= */
+.quran-section {
   position: relative;
   height: 100vh;
-  width: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: #1a1a1a;
-  overflow: hidden !important; /* ✅ FIX: Prevent horizontal scroll */
-}
-
-.initial-text-cover {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 24;
-  pointer-events: none;
-  color: var(--gold);
-}
-
-.bismillah-text {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 45px;
-  font-weight: bold;
-}
-
-.ayatsuci-text {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 30px;
-  font-weight: 300;
-}
-
-.ikrar-abadi-text {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 25px;
-  font-weight: 300;
-  margin-top: 5px;
-}
-
-.split-container {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 23;
-  overflow: hidden !important; /* ✅ FIX: Container juga harus hidden */
-}
-
-.split-left,
-.split-right {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-size: 200% 100%;
-  background-repeat: no-repeat;
-  overflow: hidden; /* ✅ FIX: Tambahkan overflow hidden */
-}
-
-.split-left {
-  left: 0;
-  background-image: url("../images/Penutup_Kiri.png");
-  background-position: left center;
-  transform: translateX(0%); /* ✅ FIX: Gunakan transform untuk animasi */
-}
-
-.split-right {
-  left: 50%;
-  background-image: url("../images/Penutup_Kanan.png");
-  background-position: right center;
-  transform: translateX(0%); /* ✅ FIX: Gunakan transform untuk animasi */
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  padding: 60px 50px;
-  width: 80%;
-  max-width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 22;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  width: 100vw;
+  background: var(--dark-bg);
   overflow: hidden;
-  animation: cardGlow 8s ease-in-out infinite, float 6s ease-in-out infinite;
 }
 
-@keyframes cardGlow {
-  0%,
-  100% {
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    box-shadow: 0 25px 70px rgba(201, 169, 110, 0.15),
-      0 25px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
+/* ================================================= */
+/* ===== FASE 1 & 2: TIRAI PENUTUP (GATES) ===== */
+/* ================================================= */
+.gate-left,
+.gate-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 10;
+  transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) translateY(0px);
-  }
-  50% {
-    transform: translate(-50%, -50%) translateY(-10px);
-  }
+.gate-left {
+  left: 0;
+  transform: translateX(0%);
 }
 
-.card-title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.3rem;
-  color: rgba(224, 175, 11, 0.349);
-  margin-bottom: 2rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+.gate-right {
+  right: 0;
+  transform: translateX(0%);
+}
+
+/* STYLING GAMBAR ASET DI DALAM TIRAI */
+.gate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================================================= */
+/* ===== FASE 1: ORNAMEN GEMBOK (LOCK) ===== */
+/* ================================================= */
+.lock-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  opacity: 1;
+  transition: all 1.2s ease-out;
+}
+
+.lock-element {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+}
+
+/* ===== KONTEN QURAN - MUNCUL SETELAH GATES TERBUKA ===== */
+.core-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  opacity: 0;
   text-align: center;
+  width: 70%;
+  max-width: 700px;
+  pointer-events: none;
+}
+
+.core-container.revealed {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== QURAN CONTENT STYLES ===== */
+.quran-content {
+  opacity: 0;
+  transform: scale(0.8) translateY(50px);
+  transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 2rem;
+  max-width: 650px;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.quran-content.revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.quran-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.surah-title {
+  font-family: var(--font-latin);
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.3s;
+}
+
+.surah-title.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem auto;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all 0.6s ease-out 0.5s;
+}
+
+.divider.revealed {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.verse-slider {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.verse-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.verse-card.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  position: relative;
 }
 
 .arabic-text {
-  font-family: "Traditional Arabic", "Scheherazade New", "Amiri", serif;
+  font-family: "Noto Naskh Arabic", serif;
   font-size: 1.8rem;
   line-height: 2.2;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary);
   direction: rtl;
   text-align: center;
-  margin: 0 0 2.5rem 0;
+  margin-bottom: 1.5rem;
   font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out 0.7s;
 }
 
-.gold-divider {
-  border: none;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 2rem auto;
-  width: 60px;
+.arabic-text.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .translation-text {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-latin);
   font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  color: var(--text-secondary);
   font-style: italic;
   text-align: center;
-  margin: 0;
-  padding: 0 5px;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+  font-weight: 300;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.8s ease-out 0.9s;
+}
+
+.translation-text.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.verse-meta {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.8s ease-out 1.1s;
+}
+
+.verse-meta.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.surah-name {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Quran Controls */
+.quran-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out 1.3s;
+}
+
+.quran-controls.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-btn {
+  background: rgba(201, 169, 110, 0.15);
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  color: var(--gold);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:hover {
+  background: rgba(201, 169, 110, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.slide-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+/* Quran Footer */
+.quran-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.8s ease-out 1.5s;
+}
+
+.quran-footer.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quran-footer p {
+  font-family: var(--font-latin);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.quran-footer small {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+/* ===== ENHANCED GLOW EFFECTS ===== */
+.verse-card.active .arabic-text {
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(201, 169, 110, 0.3),
+      0 0 20px rgba(201, 169, 110, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(201, 169, 110, 0.6),
+      0 0 40px rgba(201, 169, 110, 0.4);
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .core-container {
+    width: 80%;
+  }
+
+  .quran-content {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .arabic-text {
+    font-size: 1.5rem;
+    line-height: 2;
+  }
+
+  .translation-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .surah-title {
+    font-size: 1.6rem;
+  }
+
+  .verse-slider {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-container {
+    width: 85%;
+  }
+
+  .arabic-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+
+  .translation-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quran-controls {
+    gap: 1rem;
+  }
+
+  .surah-title {
+    font-size: 1.4rem;
+  }
+
+  .lock-element {
+    width: 80px;
+    height: 80px;
+  }
+
+  .quran-content {
+    padding: 0.5rem;
+  }
+}
+
+/* ===== FALLBACK ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quran-section.animated .quran-content {
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.quran-section.animated .core-container {
+  opacity: 1;
+}
+
+.no-gsap .gate-left {
+  transform: translateX(-55%) !important;
+}
+
+.no-gsap .gate-right {
+  transform: translateX(55%) !important;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .verse-card,
+  .quran-content,
+  .nav-btn,
+  .dot {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .gate-left,
+  .gate-right,
+  .lock-container {
+    transition: opacity 0.3s ease-out !important;
+  }
+
+  .surah-title,
+  .divider,
+  .arabic-text,
+  .translation-text,
+  .verse-meta,
+  .quran-controls,
+  .quran-footer {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ===== COUPLE SECTION ===== */
@@ -1364,22 +1666,20 @@ footer .logo a {
     min-width: 100%;
   }
 
-  .quran-split {
-    height: auto;
-    min-height: 100vh;
+  /* Quran Section Responsive */
+  .lock-element {
+    width: 60px;
+    height: 60px;
   }
 
-  .glass-card {
-    width: 85%;
-    padding: 50px 35px;
-  }
-
-  .card-title {
-    font-size: 1.2rem;
+  .core-reveal {
+    width: 300px;
+    height: 300px;
   }
 
   .arabic-text {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 2;
   }
 
   .translation-text {
@@ -1409,20 +1709,23 @@ footer .logo a {
     grid-template-columns: 1fr;
   }
 
-  .glass-card {
-    padding: 40px 25px;
+  /* Quran Section Mobile */
+  .lock-element {
+    width: 50px;
+    height: 50px;
   }
 
-  .card-title {
-    font-size: 1.1rem;
+  .core-reveal {
+    width: 250px;
+    height: 250px;
   }
 
   .arabic-text {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
-  .translation-text {
-    font-size: 0.95rem;
+  .surah-title {
+    font-size: 1rem;
   }
 
   .hero h4 {
@@ -1434,4 +1737,20 @@ footer .logo a {
     padding: 12px 30px;
     font-size: 0.9rem;
   }
+}
+/* Temporary debug styles */
+.split-bg {
+  border: 2px solid red;
+}
+
+.left-side {
+  border: 2px solid green;
+}
+
+.right-side {
+  border: 2px solid blue;
+}
+
+.mandala-right {
+  border: 2px solid yellow;
 }
