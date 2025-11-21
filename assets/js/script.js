@@ -336,7 +336,7 @@ function initEnhancedQuranAnimation() {
     gateLeft,
     {
       duration: 6,
-      x: "-55%",
+      x: "-50%",
       ease: "power2.out",
     },
     1
@@ -344,7 +344,7 @@ function initEnhancedQuranAnimation() {
     gateRight,
     {
       duration: 6,
-      x: "55%",
+      x: "50%",
       ease: "power2.out",
       onComplete: function () {
         gsap.set([gateLeft, gateRight], { zIndex: 5 });
